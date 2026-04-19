@@ -12,5 +12,5 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   spec = { import = "plugins" },
 --{ import = "plugins.colors" },
-  checker = {enabled = false} -- отключить автообновление плагинов
+  checker = {enabled = false} -- отключить автообновление плагинов  
 })

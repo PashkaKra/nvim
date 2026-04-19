@@ -7,6 +7,7 @@ opt.lazyredraw = true
 opt.background = "dark"
 opt.guifont = "JetBrainsMono Nerd Font:h12"
 opt.guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor20"
+opt.winborder = "rounded"
 
 -- Нумерация строк
 opt.number = true

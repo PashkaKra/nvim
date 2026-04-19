@@ -12,6 +12,7 @@ return{
     vim.keymap.set('n', 'o', ':Neotree float git_status')
     neotree.setup({
       filesystem = {
+        use_libuv_file_watcher = true,
         follow_current_file = {
           enabled = true,
           leave_dirs_open = false,

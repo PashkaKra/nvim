@@ -23,23 +23,34 @@ return{
       })
     })
 
-    local lspconfig = require('lspconfig')
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-    -- npm install -g pyright
-    -- sudo pacman -S gopls lua-language-server
-    -- Mason может автоматически ставить зависимости
-    -- Тут нужно вписать названия серверов, поддерживаемых nvim-lspconfig
-    local servers = {
-      'pyright',
-      'gopls',
-    }
-
-    for _, lsp in ipairs(servers) do
-      lspconfig[lsp].setup {
-        on_attach = setup_lsp_keymaps,
-        capabilities = capabilities,
-      }
+    local function setup_lsp_keymaps(client, bufnr)
+      -- ваши горячие клавиши
     end
+
+    -- Вспомогательная функция для настройки серверов
+    local function setup_server(name, config)
+      config.capabilities = capabilities
+      config.on_attach = setup_lsp_keymaps
+      
+      -- Новый API
+      vim.lsp.config[name] = config
+      vim.lsp.enable(name)
+    end
+
+    -- Настройка pyright
+    setup_server('pyright', {
+      cmd = { 'pyright-langserver', '--stdio' },
+      filetypes = { 'python' },
+      root_markers = { 'pyproject.toml', 'setup.py', 'requirements.txt', '.git' },
+    })
+
+    -- Настройка gopls
+    setup_server('gopls', {
+      cmd = { 'gopls' },
+      filetypes = { 'go', 'gomod' },
+      root_markers = { 'go.mod', '.git' },
+    })
   end
 }

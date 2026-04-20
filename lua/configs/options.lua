@@ -11,7 +11,7 @@ opt.winborder = "rounded"
 
 -- Нумерация строк
 opt.number = true
---opt.relativenumber = true
+opt.relativenumber = true
 
 -- Подсветка текущей строки
 opt.cursorline = true
